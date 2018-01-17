@@ -1,0 +1,76 @@
+package Somebody;
+
+public class Creature {
+   public int dam;
+   public int hlth;
+   public int enrgy;
+   
+   public void sethlth(int xyz){
+	   this.hlth = xyz;
+   }
+   public void setenrgy(int xyz2){
+	   this.enrgy = xyz2;
+   }
+   
+   
+   public void punch(Creature n){
+	int hltho = n.hlth;
+    int a = hltho-(dam-1);
+    if (a<=0){
+    	System.out.println(n +" Killed");
+    	n.sethlth(0);
+    	if (enrgy < 10){
+    		setenrgy(++enrgy);
+    	}
+    		}else{
+    System.out.println(n+" health now: " + a);
+    n.sethlth(a);
+    if (enrgy < 10){
+		setenrgy(++enrgy);
+        }
+      } 
+    System.out.println( "Your Energy now: " + enrgy);
+    }
+   
+   
+   public void speckick(Creature n){
+	   int hltho = n.hlth;
+	   int a =hltho - (dam+2);
+	  if (enrgy<7){
+		  System.out.println("You are too tired to do that");
+		     punch(n);
+	  }else{
+	    if (a<=0){
+		    System.out.println(n+" Killed");
+		    n.sethlth(0);
+		    n.setenrgy(enrgy-=7);
+	   }else{
+		   System.out.println(n+ " health now: " + a);
+		   n.sethlth(a);
+		   n.setenrgy(enrgy-=7);
+	   }
+	   System.out.println("Your energy now: "+ enrgy);
+   }
+  }
+   
+   
+   public void fatality(Creature n){
+	   int hltho = n.hlth;
+	   int a =hltho - (dam+8);
+	  if (enrgy<10){
+		  System.out.println("You are too tired to do that");
+		     punch(n);
+	  }else{
+	    if (a<=0){
+		    System.out.println(n+" Killed");
+		    n.sethlth(0);
+		    n.setenrgy(enrgy-=10);
+	   }else{
+		   System.out.println(n+ " health now: " + a);
+		   n.sethlth(a);
+		   n.setenrgy(enrgy-=10);
+	   }
+	   System.out.println("Your energy now: "+ enrgy);
+   }
+  }
+}  
