@@ -1,0 +1,16 @@
+import Somebody.Creature;
+import java.util.Scanner;
+public class game {
+
+	public static void main(String[] args) {
+		Creature fartator = new Creature();
+		fartator.dam = 7;
+		fartator.hlth = 50;
+		fartator.enrgy =10;
+		Creature eructer = new Creature();
+		eructer.hlth = 70;
+		eructer.dam = 4;
+		eructer.enrgy = 10;
+	}
+}
+
