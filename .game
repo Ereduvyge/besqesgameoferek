@@ -3,14 +3,117 @@ import java.util.Scanner;
 public class game {
 
 	public static void main(String[] args) {
+		
+		//Making characters
+		
 		Creature fartator = new Creature();
-		fartator.dam = 7;
+		fartator.dam = 5;
 		fartator.hlth = 50;
 		fartator.enrgy =10;
 		Creature eructer = new Creature();
 		eructer.hlth = 70;
-		eructer.dam = 4;
+		eructer.dam = 3;
 		eructer.enrgy = 10;
+		Creature pinkmonster = new Creature();
+		pinkmonster.dam=7;
+		pinkmonster.hlth=30;
+		pinkmonster.enrgy=9;
+		Creature theanimal = new Creature();
+		theanimal.dam=4;
+		theanimal.hlth=60;
+		theanimal.enrgy=10;
+		
+		//The First part
+		
+		int win = 0;
+		System.out.println("THE ULTIMATE FIGHTER RUSSIA");
+		System.out.println("MENU");
+		System.out.println(">Start");
+		System.out.println(">Characters");
+		Scanner fsc = new Scanner(System.in);
+		String fch = fsc.nextLine();
+		
+        //Menu choose
+		
+		switch(fch){
+		     
+		   case "characters":
+			   
+			   System.out.println("Fartator:");
+			   fartator.check();
+			   System.out.println("Eructer:");
+			   eructer.check();
+			   System.out.println("Pink Monster:");
+			   pinkmonster.check();
+			   System.out.println("The ANIMAL:");
+		       theanimal.check();
+		       System.out.println(">Start Fighting");
+		       
+		   break;
+		       
+		   case "start":
+			   
+			   System.out.println("CHOOSE YOUR FIGHTER");
+		       Scanner ssc = new Scanner(System.in);
+		       String sch = ssc.nextLine();
+		       
+		       switch(sch){
+		       
+		       case "fartator":
+			         System.out.println("CHOOSE YOUR OPPONENT");
+		             Scanner xsc = new Scanner(System.in);
+		             String xch = xsc.nextLine();
+		             switch(xch){
+		             
+		                  case "eructer":
+		                  System.out.println("Fartator hits first!");
+		                  while (fartator.hlth>0 && eructer.hlth>0){
+		                  System.out.println("Fartator's attack");
+		                  fartator.hit(eructer);
+		                   if (eructer.hlth==0){
+		                	   System.out.println("");
+		                	   System.out.println("FARTATOR WINS!!!");
+		                	   continue;
+		                       }
+		                  System.out.println("Eructer's attack");
+		                  eructer.hit(fartator);
+		                   if (fartator.hlth==0){
+		                	   System.out.println("");
+		                	   System.out.println("ERUCTER WINS!!!");
+		                	   continue;
+		                       }
+		                   }
+		                   break;
+		                   
+		                  /////next case
+		          
+		          
+		          
+		          }
+		    	   
+		    	   
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+	
+		
+		
+		}
+			
 	}
 }
-
+}
