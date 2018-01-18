@@ -1,5 +1,7 @@
 package Somebody;
 
+import java.util.Scanner;
+
 public class Creature {
    public int dam;
    public int hlth;
@@ -17,13 +19,13 @@ public class Creature {
 	int hltho = n.hlth;
     int a = hltho-(dam-1);
     if (a<=0){
-    	System.out.println(n +" Killed");
+    	System.out.println("Enemy is Killed");
     	n.sethlth(0);
     	if (enrgy < 10){
     		setenrgy(++enrgy);
     	}
     		}else{
-    System.out.println(n+" health now: " + a);
+    System.out.println("Enemy's health now: " + a);
     n.sethlth(a);
     if (enrgy < 10){
 		setenrgy(++enrgy);
@@ -36,18 +38,18 @@ public class Creature {
    public void speckick(Creature n){
 	   int hltho = n.hlth;
 	   int a =hltho - (dam+2);
-	  if (enrgy<7){
-		  System.out.println("You are too tired to do that");
+	  if (enrgy<5){
+		  System.out.println("You are too tired to special kick!");
 		     punch(n);
 	  }else{
 	    if (a<=0){
-		    System.out.println(n+" Killed");
+		    System.out.println("Enemy is Killed");
 		    n.sethlth(0);
-		    n.setenrgy(enrgy-=7);
+		    setenrgy(enrgy-=5);
 	   }else{
-		   System.out.println(n+ " health now: " + a);
+		   System.out.println("Enemy's health now: " + a);
 		   n.sethlth(a);
-		   n.setenrgy(enrgy-=7);
+		   setenrgy(enrgy-=5);
 	   }
 	   System.out.println("Your energy now: "+ enrgy);
    }
@@ -58,19 +60,62 @@ public class Creature {
 	   int hltho = n.hlth;
 	   int a =hltho - (dam+8);
 	  if (enrgy<10){
-		  System.out.println("You are too tired to do that");
-		     punch(n);
+		  System.out.println("You are too tired to fatality!");
+		     speckick(n);
 	  }else{
 	    if (a<=0){
-		    System.out.println(n+" Killed");
+		    System.out.println("Enemy is Killed");
 		    n.sethlth(0);
-		    n.setenrgy(enrgy-=10);
+		    setenrgy(enrgy-=10);
 	   }else{
-		   System.out.println(n+ " health now: " + a);
+		   System.out.println("Enemy's health now: " + a);
 		   n.sethlth(a);
-		   n.setenrgy(enrgy-=10);
+		   setenrgy(enrgy-=10);
 	   }
 	   System.out.println("Your energy now: "+ enrgy);
    }
   }
-}  
+   
+   
+   public void check(){
+	   System.out.println("The CHARACTER has:");
+	   System.out.println("Damage = " +dam);
+	   System.out.println("Health = "+hlth);
+	   System.out.println("Energy = " + enrgy+"/10");
+   }
+   
+   public void hit(Creature n){
+		   Scanner figsc = new Scanner(System.in);
+		   String figch = figsc.nextLine();
+		   
+		   switch (figch){
+		   
+		     case "punch":
+		    	 punch(n);
+		     break;
+		    	 
+		     case "speckick":
+		    	 speckick(n);
+		     break;
+		     
+		     case "fatality":
+		    	 fatality(n);
+		     break;
+		   
+		   
+		   
+	   }
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+}   
