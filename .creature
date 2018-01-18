@@ -21,19 +21,22 @@ public class Creature {
     if (a<=0){
     	System.out.println("Enemy is Killed");
     	n.sethlth(0);
-    	if (enrgy < 10){
-    		setenrgy(++enrgy);
+    	if (enrgy <9){
+    		setenrgy(enrgy+=2);
+    	}else if (enrgy == 9){
+    	    setenrgy(++enrgy);
     	}
     		}else{
     System.out.println("Enemy's health now: " + a);
     n.sethlth(a);
-    if (enrgy < 10){
-		setenrgy(++enrgy);
-        }
+    if (enrgy < 9){
+		setenrgy(enrgy+=2);
+        }else if (enrgy == 9){
+        setenrgy(++enrgy);
       } 
     System.out.println( "Your Energy now: " + enrgy);
     }
-   
+  }  
    
    public void speckick(Creature n){
 	   int hltho = n.hlth;
