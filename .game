@@ -16,7 +16,7 @@ public class game {
 		eructer.enrgy = 10;
 		Creature pinkmonster = new Creature();
 		pinkmonster.dam=7;
-		pinkmonster.hlth=30;
+		pinkmonster.hlth=40;
 		pinkmonster.enrgy=9;
 		Creature theanimal = new Creature();
 		theanimal.dam=4;
@@ -54,7 +54,7 @@ public class game {
 		   case "start":
 			   System.out.println("Kicks:");
 			   System.out.println("punch - weak, +2 energy");
-			   System.out.println("speckick - average, -5 energy ");
+			   System.out.println("speckick - normal, -5 energy ");
 			   System.out.println("fatality - powerful, -10 energy");
 			   System.out.println("CHOOSE YOUR FIGHTER");
 		       Scanner ssc = new Scanner(System.in);
