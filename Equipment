@@ -1,0 +1,25 @@
+package Somebody;
+
+public class Equipment {
+    
+    public int dameq;
+    public int defeq;
+    public int cost;
+    public String eqname;
+    
+    public Equipment(String c){
+        eqname=c;
+    }
+    
+    public void setdameq(int a){
+        dameq = a;
+    }
+    
+    public void setdefeq(int a){
+        defeq = a;
+    }
+     
+    public void setcost(int a){
+        cost = a;
+    }
+}
