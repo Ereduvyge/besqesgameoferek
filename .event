@@ -1,0 +1,1349 @@
+import java.util.Scanner;
+import java.util.Random;
+import Somebody.Creature;
+import Somebody.Equipment;
+
+
+public class event{
+	  
+	  Creature adam=new Creature("adam");
+	  Creature zombie=new Creature("zombie");
+	  Creature cyborg=new Creature("cyborg");
+	  Creature darklord=new Creature("darklord");
+	  
+	  
+	  
+	        Equipment blade = new Equipment("blade");
+	        Equipment katana = new Equipment("katana");
+	        Equipment armor = new Equipment("armor");
+	        Equipment herocape = new Equipment("herocape");
+	        Equipment stick = new Equipment("The stick of truth");
+	  
+	  
+	  public void menu(){
+		   System.out.println("");
+	       System.out.println("VERY STRANGE HEROES");
+	       System.out.println("!!!MENU!!!");
+	       System.out.println(">>>Quest");
+	       System.out.println(">>>Story mode");
+	       System.out.println(">>>Quick Fight");
+	      Scanner sc = new Scanner(System.in);
+	      String  skate = sc.nextLine();
+	        
+	          switch(skate){
+	             case "quest":
+	                quest();
+	             break;
+	            
+	             case "story":
+	                System.out.println("");
+	                System.out.println("");
+	                System.out.println("");
+	                story();
+	             break;
+	             
+	             case "quickfight":
+	                quickfight();
+	             break;
+	             
+	             default:
+	               System.out.println("");
+	               System.out.println("");
+	               menu();
+	          }
+	       
+	       }
+	       
+	//------------------quest------------------
+	       
+	        
+	      public void quest(){
+	    
+	           adam.setdam(5);
+	           adam.setdef(0);
+	           adam.sethlth(75);
+	           adam.setenrgy(10);
+	           adam.setmon(0);
+	           adam.setdefarm(false);
+	           adam.setattarm(false);
+	    
+	           blade.setdameq(2);
+	           blade.setcost(1500);
+	           katana.setdameq(5);
+	           katana.setcost(3000);
+	           armor.setdefeq(1);
+	           armor.setcost(1500);
+	           herocape.setdefeq(3);
+	           herocape.setcost(3000);
+	           stick.setcost(3000);
+	           stick.setdefeq(4);
+	           stick.setdameq(6);
+	           
+	        System.out.println("");
+	        System.out.println("");
+	        System.out.println("QUEST");
+	        System.out.println("Goal: you have to find the stone of power");
+	        System.out.println("LETS GO!!!");
+	            
+	            
+	        choose();
+	       }
+	       
+	       
+	       
+	       
+	       public void choose(){
+	           System.out.println("");
+	           System.out.println("What are you going to do?");
+	       Scanner chsc = new Scanner(System.in);
+	       String chch = chsc.nextLine();
+	       
+	          switch(chch){
+	              case "stats":
+	             adam.showstats();
+	             choose();
+	              break;
+	              default:
+	             go();
+	          }
+	    }
+	    
+	    
+	       
+	       public void go(){
+	         System.out.println("");
+	         System.out.println("On the way...");
+	         Random rd = new Random();
+	         int rda = rd.nextInt(99);
+	             if(rda<30){
+	                 monstermeet();
+	             }else if(rda>=30 && rda<55){
+	                 housemeet();
+	             }else if(rda>=55 && rda<75){
+	                 tradesmanmeet();
+	             }else if(rda>=75 && rda<90){
+	                 wizardmeet();
+	             }else{
+	                 cave();
+	             }
+	    }        
+	    
+	    
+	    
+	       public void monstermeet(){
+	           Random rd = new Random();
+	           int rda = rd.nextInt(9);
+	           
+	           if(rda<4){
+	              System.out.println("");
+	              System.out.println("You've met Zombie!");
+	              zombie.setdam(4);
+	              zombie.sethlth(20);
+	              System.out.println("Fight him!");
+	              
+	              while (zombie.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(zombie);
+	        
+	         if (zombie.hlth==0){
+	          System.out.println("");
+	          System.out.println("You win!");
+	          System.out.println("");
+	          adam.setmon(adam.mon+=150);
+	          adam.setenrgy(10);
+	          System.out.println("You get 150 coins"); choose();
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Zombie's attack");                               
+	          zombie.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	         System.out.println(">>>Play again");
+	         Scanner scz=new Scanner(System.in);
+	         String chz=scz.nextLine();
+	            switch(chz){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	   }
+	          }else if(rda>=4 && rda<8){
+	              
+	              System.out.println("");
+	              System.out.println("Cyborg is on your way!");
+	              cyborg.setdam(4);
+	              cyborg.sethlth(20);
+	              System.out.println("Fight him!");
+	              
+	              while (cyborg.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(cyborg);
+	        
+	         if (cyborg.hlth==0){
+	          System.out.println("");
+	          System.out.println("You win!");
+	          System.out.println("");
+	          adam.setmon(adam.mon+=150);
+	          adam.setenrgy(10);
+	          System.out.println("You get 150 coins"); choose();
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Cyborg's attack");                               
+	          cyborg.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	         System.out.println(">>>Play again");
+	         Scanner scc=new Scanner(System.in);
+	         String chc=scc.nextLine();
+	            switch(chc){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	   }    
+	          }else{
+	              System.out.println("");
+	              System.out.println("Here is something powerful!");
+	              System.out.println("That is DARKLORD!");
+	              darklord.setdam(5);
+	              darklord.sethlth(35);
+	              System.out.println("Fight him!");
+	              
+	              while (darklord.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(darklord);
+	        
+	          if (darklord.hlth==0){
+	          System.out.println("");
+	          System.out.println("You win!");
+	          System.out.println("");
+	          adam.setmon(adam.mon+=350);
+	          adam.setenrgy(10);
+	          System.out.println("You get 350 coins"); choose();
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Darklord's attack");                               
+	          darklord.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	         System.out.println(">>>Play again");
+	         Scanner scd=new Scanner(System.in);
+	         String chd=scd.nextLine();
+	            switch(chd){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	     }
+	}
+	    
+	       }
+	       
+	       
+	       
+	       public void housemeet(){
+	             Random rd = new Random();
+	             int rda = rd.nextInt(9);
+	           
+	          if(rda<4){
+	            System.out.println("");
+	            System.out.println("You've seen the shelter");
+	            System.out.println("What are you going to do?");
+	            Scanner scs=new Scanner(System.in);
+	            String chs=scs.nextLine();
+	            
+	             switch(chs){
+	                 case "loot":
+	                   System.out.println("You have found 100 coins");
+	                   adam.setmon(adam.mon+=100);
+	                  Random rdsh = new Random();
+	                 int rdsha = rdsh.nextInt(9);
+	                  if(rdsha<5){
+	                  System.out.println("");
+	                  System.out.println("That's all.");choose();
+	               }else if(rdsha>=5 && rdsha<6){
+	            	  System.out.println(""); 
+	                  System.out.println("You've found another 100 coins!");
+	        adam.setmon(adam.mon+=100);choose();
+	                  }else if(rdsha==6){
+	                  System.out.println("");
+	                  System.out.println("You've found blade!!!");
+	             if(adam.attarm==false){
+	             adam.equipatt(blade);}choose();
+	                  }else if(rdsha==7){
+	                  System.out.println("");
+	                  System.out.println("You've found armor!!!");
+	              if(adam.attarm==false){
+	             adam.equipdef(armor);}choose();
+	                  }else{
+	                  System.out.println("");
+	                  System.out.println("HERE IS BOMB!!!");
+	                  System.out.println("You have received 15 damage");
+	              adam.sethlth(adam.hlth-=15);
+	                 if(adam.hlth<1){
+	                	 System.out.println("");
+	                     System.out.println("You died!");
+	                     System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	        Scanner scshs=new Scanner(System.in);
+	       String chshs=scshs.nextLine();
+	            switch(chshs){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	                 }
+	               }choose();
+	            }
+	                 break;
+	                 default:
+	                 go();
+	             }
+	              
+	              
+	          }else if(rda>=4 && rda<8){
+	              
+	              System.out.println("");
+	              System.out.println("The old house is on your way.");
+	           System.out.println("What are you going to do?");
+	          Scanner sch=new Scanner(System.in);
+	          String chh=sch.nextLine();
+	            
+	             switch(chh){
+	                 case "loot":
+	                   System.out.println("You have found 100 coins");
+	                 adam.setmon(adam.mon+=100);
+	                  Random rdoh = new Random();
+	                 int rdoha = rdoh.nextInt(9);
+	                  if(rdoha<5){
+	                	  System.out.println("");
+	                  System.out.println("That's all.");choose();
+	               }else if(rdoha>=5 && rdoha<6){
+	            	   System.out.println("");
+	                  System.out.println("You've found another 100 coins!");
+	        adam.setmon(adam.mon+=100);choose();
+	                  }else if(rdoha==6){
+	                	  System.out.println("");
+		                  System.out.println("You've found blade!!!");
+		             if(adam.attarm==false){
+		             adam.equipatt(blade);}choose();
+	                  }else if(rdoha==7){
+	                	  System.out.println("");
+	                  System.out.println("You've found armor!!!");
+	             if(adam.defarm==false){
+	             adam.equipdef(armor);}choose();
+	                  }else{
+	                	  System.out.println("");
+	                  System.out.println("HERE IS BOMB!!!");
+	                  System.out.println("You have received 15 damage");
+	              adam.sethlth(adam.hlth-=15);
+	                 if(adam.hlth<1){
+	                	 System.out.println("");
+	            System.out.println("You died!");
+	                     System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	        Scanner scohs=new Scanner(System.in);
+	       String chohs=scohs.nextLine();
+	            switch(chohs){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	                 }
+	               }choose();
+	            }
+	                 break;
+	                 default:
+	                 go();
+	             }
+	              
+	              
+	          }else{
+	              
+	              System.out.println("");
+	              System.out.println("Wow! You have found the old camp!");
+	              System.out.println("But the main storage is under cyborg's control!");
+	           System.out.println("What are you going to do?");
+	         Scanner scc=new Scanner(System.in);
+	          String chc=scc.nextLine();
+	            
+	             switch(chc){
+	                 case "loot":
+	                   System.out.println("You have found 100 coins");
+	                adam.setmon(adam.mon+=100);
+	                Random rdca = new Random();
+	                int rdcaa = rdca.nextInt(9);
+	                  if(rdcaa<5){
+	                	  System.out.println("");
+	                  System.out.println("That's all.");choose();
+	              }else if(rdcaa>=5 && rdcaa<6){
+	            	  System.out.println("");
+	                  System.out.println("You've found another 100 coins!");
+	        adam.setmon(adam.mon+=100);choose();
+	                  }else if(rdcaa==6){
+	                	  System.out.println("");
+	                  System.out.println("You've found blade!!!");
+	              if(adam.attarm==false){
+	             adam.equipatt(blade);}choose();
+	                  }else if(rdcaa==7){
+	                	  System.out.println("");
+	                  System.out.println("You've found armor!!!");
+	               if(adam.defarm==false){
+	             adam.equipdef(armor);}choose();
+	                  }else{
+	                	  System.out.println("");
+	                  System.out.println("HERE IS BOMB!!!");
+	                  System.out.println("You have received 15 damage");
+	              adam.sethlth(adam.hlth-=15);
+	                 if(adam.hlth<1){
+	                	 System.out.println("");
+	            System.out.println("You died!");
+	                     System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	       Scanner sccas=new Scanner(System.in);
+	       String chcas=sccas.nextLine();
+	            switch(chcas){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	                 }
+	               }choose();
+	            }
+	                 break;
+	                 case "fight":
+	                	 System.out.println("");
+	         System.out.println("You have to win two cyborgs to gain access to storage!");       
+	         System.out.println("LETS GO!!");   
+	         System.out.println("First!!!");
+	         cyborg.sethlth(30);
+	         cyborg.setdam(4);    
+	         
+	         
+	         while (cyborg.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(cyborg);
+	        
+	         if (cyborg.hlth==0){
+	          System.out.println("");
+	          System.out.println("Next!");
+	          System.out.println("");
+	          adam.setenrgy(10);
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Cyborg's attack");                               
+	          cyborg.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	         System.out.println(">>>Play again");
+	       Scanner sccfc=new Scanner(System.in);
+	         String chcfc=sccfc.nextLine();
+	            switch(chc){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	    }
+
+	         cyborg.sethlth(30);
+	         cyborg.setdam(4);
+	         
+	         while (cyborg.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(cyborg);
+	        
+	         if (cyborg.hlth==0){
+	          System.out.println("");
+	          adam.setenrgy(10);
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Cyborg's attack");                               
+	          cyborg.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	         System.out.println(">>>Play again");
+	       Scanner sccsc=new Scanner(System.in);
+	         String chcsc=sccsc.nextLine();
+	            switch(chc){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	      }   
+	           System.out.println("");
+	           System.out.println("Amazing! Storage is yours!");
+	           System.out.println("");
+	           System.out.println("JACKPOT! There are 300 coins, blade and armor. Also, your health now: 75!");
+	           adam.setmon(adam.mon+=300);
+	           if(adam.attarm==false){
+	           adam.equipatt(blade);}
+	           if(adam.defarm ==false){
+	           adam.equipdef(armor);}
+	           adam.sethlth(75);
+	           choose();
+	                 break;
+	                 default:
+	                 go();
+	             }
+	              
+	          }
+	           
+	       } 
+
+	           
+	           
+	     public void tradesmanmeet(){
+	         System.out.println("");
+	         System.out.println("Hey! There is tradesman!");
+	         System.out.println("");
+	         System.out.println("You have "+adam.mon+"coins");
+	         System.out.println("");
+	         System.out.println("He has:");
+	         System.out.println("blade - 1500coins, +2dam");
+	         System.out.println("katana - 3000coins, +5dam");
+	         System.out.println("armor - 1500coins, +1def");
+	         System.out.println("herocape - 3000coins, +3def");
+	         System.out.println("");
+	         System.out.println("Wanna buy something?");
+	        Scanner sc = new Scanner(System.in);
+	        String scc = sc.nextLine();
+	        switch(scc){
+	         case "yes":
+	         buying();
+	         break;
+	         default: choose();
+	        }
+	     }
+	     
+	     public void buying(){
+	         System.out.println("");
+	         System.out.println("What do you want?");
+	          Scanner sc=new Scanner(System.in);
+	          String scc=sc.nextLine();
+	          
+	          switch(scc){
+	              case"blade":
+	                 if(adam.mon<1500){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna buy other thing?");
+	                   Scanner scf= new Scanner(System.in);
+	                 String scff=scf.nextLine();
+	                      switch(scff){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("You bought blade!");
+	                adam.setmon(adam.mon-=1500);
+	                adam.equipatt(blade);
+	                System.out.println("");
+	                System.out.println("Wanna buy other thing?");
+	                   Scanner scfff= new Scanner(System.in);
+	             String scffff=scfff.nextLine();
+	                      switch(scffff){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	              break;
+	              case"katana":
+	              if(adam.mon<3000){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna buy other thing?");
+	                   Scanner scs= new Scanner(System.in);
+	                 String scss=scs.nextLine();
+	                      switch(scss){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("You bought katana!");
+	                adam.setmon(adam.mon-=3000);
+	                adam.equipatt(katana);
+	                System.out.println("");
+	                System.out.println("Wanna buy other thing?");
+	                   Scanner scsss= new Scanner(System.in);
+	             String scssss=scsss.nextLine();
+	                      switch(scssss){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	              break;
+	              case"armor":
+	              if(adam.mon<1500){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna buy other thing?");
+	                   Scanner sct= new Scanner(System.in);
+	                 String sctt=sct.nextLine();
+	                      switch(sctt){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("You bought armor!");
+	                adam.setmon(adam.mon-=1500);
+	                adam.equipdef(armor);
+	                System.out.println("");
+	                System.out.println("Wanna buy other thing?");
+	                   Scanner scttt= new Scanner(System.in);
+	             String sctttt=scttt.nextLine();
+	                      switch(sctttt){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	              break;
+	              case"herocape":
+	              if(adam.mon<3000){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna buy other thing?");
+	                   Scanner scz= new Scanner(System.in);
+	                 String sczz=scz.nextLine();
+	                      switch(sczz){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("You bought herocape!");
+	                adam.setmon(adam.mon-=3000);
+	                adam.equipdef(herocape);
+	                System.out.println("");
+	                System.out.println("Wanna buy other thing?");
+	                   Scanner sczzz= new Scanner(System.in);
+	             String sczzzz=sczzz.nextLine();
+	                      switch(sczzzz){
+	                          case"yes":
+	                          buying();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	              break;
+	              default: buying();
+	        }
+	         
+	     }
+	     
+	     
+	       
+	     public void wizardmeet(){
+	         System.out.println("");
+	         System.out.println("Wizard is right in front of you!");
+	         System.out.println("");
+	         System.out.println("You have "+adam.mon+"coins");
+	         System.out.println("");
+	         System.out.println("He has:");
+	         System.out.println("Health spell - max health, 400coins");
+	         System.out.println("Damage spell - +1 damage, 1000coins");
+	         System.out.println("Something mysterious is under his coat!");
+	         System.out.println("Do you want to buy something?");
+	        Scanner sc = new Scanner(System.in);
+	        String scc = sc.nextLine();
+	        switch(scc){
+	         case "yes":
+	         spelling();
+	         break;
+	         default: choose();
+	        }
+	     }
+	     
+	     public void spelling(){
+	    	 System.out.println("");
+	    	 System.out.println("What do you want?");
+	        Scanner sc = new Scanner(System.in);
+	        String scc = sc.nextLine();
+	        switch(scc){
+	            case"health":
+	              if(adam.mon<400){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna see more?");
+	                   Scanner scf= new Scanner(System.in);
+	                 String scff=scf.nextLine();
+	                      switch(scff){
+	                          case"yes":
+	                          spelling();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("Your health has increased!");
+	                adam.setmon(adam.mon-=400);
+	                adam.sethlth(75);
+	                System.out.println("Wanna see more?");
+	                   Scanner scfff= new Scanner(System.in);
+	             String scffff=scfff.nextLine();
+	                      switch(scffff){
+	                          case"yes":
+	                          spelling();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	            break;
+	            case"damage":
+	            
+	            if(adam.mon<1000){
+	                     System.out.println("You don't have enough money!");
+	                   System.out.println("Wanna see more?");
+	                   Scanner scs=new Scanner(System.in);
+	                 String scss=scs.nextLine();
+	                      switch(scss){
+	                          case"yes":
+	                          spelling();
+	                          break;
+	                          default:
+	                          choose();
+	                      }
+	                 }else{
+	                	 System.out.println("");
+	                    System.out.println("Your damage has increased!");
+	                adam.setmon(adam.mon-=1000);
+	                adam.setdam(adam.dam+=1);
+	                System.out.println("Wanna see more?");
+	                   Scanner scsss= new Scanner(System.in);
+	             String scssss=scsss.nextLine();
+	                      switch(scssss){
+	                          case"yes":
+	                          spelling();
+	                          break;
+	                          default:
+	                          choose();
+	                 }
+	                }
+	            
+	            break;
+	            case"something":
+	            
+	              System.out.println("");
+	              System.out.println("Wait... It is the stick of truth!!!");
+	              System.out.println("Will you buy that wonder?");
+	              System.out.println("That will charge for 4000coins and you need to answer his question!");
+	              System.out.println("Make sure you can get this!");
+	              Scanner scw= new Scanner(System.in);
+	             String scww=scw.nextLine();
+	                      switch(scww){
+	                          case"yes":
+	        System.out.println("");
+	        System.out.println("It's a bird!");
+	        System.out.println("It's a plane!");
+	        System.out.println("It's ...");
+	        Scanner ans=new Scanner(System.in);
+	        String answer = ans.nextLine();
+	        
+	        if(adam.mon>=4000 && answer.equals("superman")){
+	        	System.out.println("");
+	            System.out.println("Good for you!!!");
+	            System.out.println("You get THE STICK OF TRUTH!");
+	            adam.equipatt(stick);
+	            adam.equipdef(stick);
+	            adam.setmon(adam.mon-=4000);
+	            System.out.println("");
+	            System.out.println("Wanna see more?");
+	                   Scanner scwch= new Scanner(System.in);
+	             String sccwch=scwch.nextLine();
+	                      switch(sccwch){
+	                          case"yes":
+	                          spelling();
+	                          break;
+	                          default:
+	                          choose();}
+	        }else{
+	        	System.out.println("");
+	            System.out.println("You've wasted his time!");
+	            System.out.println("He is gone and left a bomb!!");
+	            System.out.println("You have received 15 damage");
+	              adam.sethlth(adam.hlth-=15);
+	                 if(adam.hlth<1){
+	                	 System.out.println("");
+	                     System.out.println("You died!");
+	                     System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	        Scanner scshs=new Scanner(System.in);
+	       String chshs=scshs.nextLine();
+	            switch(chshs){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	                 }
+	           }choose();
+	        }
+	                          break;
+	                          default:
+	                  System.out.println("Choose other.");
+	                          spelling();
+	                 }
+	              
+	            break;
+	            default:spelling();
+	                
+	        }
+	           
+	     }
+	       
+	      
+	      public void cave(){
+	         System.out.println("");
+	         System.out.println("This is very dangerous place!");
+	         System.out.println("Make sure you have good equipment and many health!");
+	         System.out.println("So... Enter the cave?");
+	         Scanner sc= new Scanner(System.in);
+	         String scc=sc.nextLine();
+	            switch(scc){
+	                case"yes":
+	                enter();
+	                break;
+	                default:choose();
+	            }
+	     }
+	      
+	      
+	      public void enter(){
+	          System.out.println("");
+	          System.out.println("Three Darklord demons are standing sentinel over something!");
+	         System.out.println("Go get them!");
+	         System.out.println("First!");
+	          
+	              darklord.setdam(6);
+	              darklord.sethlth(40);
+	              
+	              while (darklord.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(darklord);
+	        
+	          if (darklord.hlth==0){
+	          System.out.println("");
+	          System.out.println("Next!");
+	          adam.setenrgy(10);
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Darklord's attack");                               
+	          darklord.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	         Scanner scf=new Scanner(System.in);
+	         String chf=scf.nextLine();
+	            switch(chf){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	     }
+	          
+	              darklord.setdam(6);
+	              darklord.sethlth(40);
+	              
+	              while (darklord.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(darklord);
+	        
+	          if (darklord.hlth==0){
+	          System.out.println("");
+	          System.out.println("Next!");
+	          adam.setenrgy(10);
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Darklord's attack");                               
+	          darklord.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	         Scanner scs=new Scanner(System.in);
+	         String chs=scs.nextLine();
+	            switch(chs){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	     }
+	         
+	              darklord.setdam(6);
+	              darklord.sethlth(40);
+	              
+	              while (darklord.hlth>0 && adam.hlth>0){
+	          System.out.println("");
+	          System.out.println("Your attack!");                    
+	          adam.hit(darklord);
+	        
+	          if (darklord.hlth==0){
+	          System.out.println("");
+	          System.out.println("You've beated them!");
+	          adam.setenrgy(10);
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println("Darklord's attack");                               
+	          darklord.kick(adam);
+	         
+	          if (adam.hlth==0){
+	            System.out.println("");
+	            System.out.println("You Lose!");
+	           System.out.println("");
+	          System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	         Scanner scf=new Scanner(System.in);
+	         String chf=scf.nextLine();
+	            switch(chf){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	            }
+	            continue;
+	         }
+	     }
+	    
+	        System.out.println("");
+	        System.out.println("Let's find out what did they guarded!");
+	        System.out.println("That is box, but you need sacrafise 15 health to open it!");
+	        Scanner tmsc=new Scanner(System.in);
+	        String tmch = tmsc.nextLine();
+	           switch(tmch){
+	               case"sacrafise":
+	               
+	               System.out.println("You are sacrifising 15 health");
+	              adam.sethlth(adam.hlth-=15);
+	                 if(adam.hlth<1){
+	                	 System.out.println("");
+	                     System.out.println("You die!");
+	                     System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	        Scanner scshs=new Scanner(System.in);
+	       String chshs=scshs.nextLine();
+	            switch(chshs){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();
+	                 }}
+	                 System.out.println("");
+	                 System.out.println("");
+	                System.out.println("Box is opened!");
+	                System.out.println("And what is here?");
+	                System.out.println("");
+	                System.out.println("Congrats!!!");
+	                System.out.println("There is the blue stone of power");
+	                System.out.println("");
+	                System.out.println("YOU HAVE ENDED QUEST!");
+	                System.out.println("Next stop is story :-p");
+	                System.out.println("");
+	                System.out.println("");
+	              System.out.println(">>>Menu");
+	        System.out.println(">>>Play again");
+	        Scanner scshss=new Scanner(System.in);
+	       String chshss=scshss.nextLine();
+	            switch(chshss){
+	                case"playagain":
+	              quest();
+	                break;
+	                default:
+	               menu();}
+	               break;
+	               default:choose();
+	           }
+	        
+	      }
+	      
+	      
+	      
+	       
+	//--------------story----------------
+	 public void story(){
+	           System.out.println("Story");
+	           System.out.println("");
+	           menu();
+	       }
+	       
+	//--------------quickfight--------------
+	       
+	       public void quickfight(){
+	           System.out.println("");
+	           System.out.println("");
+	           System.out.println(">>>1P");
+	           System.out.println(">>>2P");
+	         System.out.println(">>>Characters");
+	        Scanner scq = new Scanner(System.in);
+	      String scqq = scq.nextLine();
+	        
+	          switch(scqq){
+	          
+	              case "characters":
+	             System.out.println("");
+	             System.out.println("");  
+	             System.out.println("FARTATOR:");
+	             System.out.println("5/75");
+	             System.out.println("");
+	             System.out.println("ERUCTER:");
+	             System.out.println("4/90");
+	             System.out.println("");
+	             System.out.println("PINK MONSTER:");
+	             System.out.println("6/60");
+	             System.out.println("");
+	             System.out.println("THE ANIMAL:");
+	             System.out.println("3/120");
+	             quickfight();
+	              
+	              case "oneplayer":
+	                oneplayerfight();
+	              break;
+	              
+	              case "twoplayers":
+	                twoplayersfight();
+	              break;
+	              
+	              default:
+	                  quickfight();
+	           }
+	       }
+	  
+	      
+	    
+	       public void twoplayersfight(){
+	          System.out.println("");
+	          System.out.println("You can use:");
+	          System.out.println("punch - weak, +2 energy");
+	          System.out.println("speckick - normal, -5 energy ");
+	          System.out.println("fatality - powerful, -10 energy");
+	          System.out.println("heal - +10 health, -5 energy");
+	          System.out.println("wait - +4 energy");
+	          
+	          
+	          System.out.println("");
+	          System.out.println("First player, CHOOSE YOUR FIGHTER!");   
+	       Scanner ffsc = new Scanner(System.in);
+	       String ffch = ffsc.nextLine();
+	       Creature fcch = new Creature(ffch);
+	            if(fcch.name.equals("fartator")){
+	                fcch.dam=5;
+	                fcch.hlth=75;
+	                fcch.enrgy=10;
+	      }else if(fcch.name.equals("eructer")){
+	                fcch.dam=4;
+	                fcch.hlth=90;
+	                fcch.enrgy=10;
+	   }else if(fcch.name.equals("pinkmonster")){
+	                fcch.dam=6;
+	                fcch.hlth=60;
+	                fcch.enrgy=10;
+	     }else if(fcch.name.equals("theanimal")){
+	                fcch.dam=3;
+	                fcch.hlth=120;
+	                fcch.enrgy=10;
+	       }else{System.out.println("Choose another fighter!");
+	       twoplayersfight();}
+	       
+	       
+	       
+	       
+	          System.out.println("");
+	          System.out.println("Second player, CHOOSE YOUR FIGHTER!");   
+	       Scanner sfsc = new Scanner(System.in);
+	       String sfch = sfsc.nextLine();
+	       Creature scch = new Creature(sfch);
+	            if(scch.name.equals(fcch.name)){
+	                System.out.println("Choose another fighter!");
+	       twoplayersfight();}
+	    
+	    
+	            if(scch.name.equals("fartator")){
+	                scch.dam=5;
+	                scch.hlth=75;
+	                scch.enrgy=10;
+	       }else if(scch.name.equals("eructer")){
+	                scch.dam=4;
+	                scch.hlth=90;
+	                scch.enrgy=10;
+	   }else if(scch.name.equals("pinkmonster")){
+	                scch.dam=6;
+	                scch.hlth=60;
+	                scch.enrgy=10;
+	     }else if(scch.name.equals("theanimal")){
+	                scch.dam=3;
+	                scch.hlth=120;
+	                scch.enrgy=10;
+	       }else{System.out.println("Choose another fighter!");
+	       twoplayersfight();}
+	       
+	       
+	       
+	       
+	       
+	    
+	          System.out.println("LET THE BATTLE BEGIN");
+	          
+	          
+	           
+	          while (fcch.hlth>0 && scch.hlth>0){
+	          System.out.println("");
+	          System.out.println(ffch+"'s attack");                    
+	          fcch.hit(scch);
+	        
+	         if (scch.hlth==0){
+	          System.out.println("");
+	          System.out.println("First player wins!!!");
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println(sfch+"'s attack");                               
+	          scch.hit(fcch);
+	         
+	          if (fcch.hlth==0){
+	            System.out.println("");
+	            System.out.println("Second player's wins!!!");
+	            continue;
+	                       }
+	   }
+	            
+	        
+	          System.out.println("");
+	          System.out.println("");
+	         System.out.println(">>>Play again");
+	          System.out.println(">>>Menu"); 
+	          Scanner agmsc = new Scanner(System.in);
+	          String agmsch = agmsc.nextLine();
+	          switch(agmsch){
+	          case "playagain":
+	              twoplayersfight();
+	          break;
+	          default:
+	               menu();
+	             }
+	       }
+	 
+	 
+	       
+	       public void oneplayerfight(){
+	          System.out.println("");
+	          System.out.println("One player fight mode");
+	          System.out.println("");
+	          System.out.println("You can use:");
+	          System.out.println("punch - weak, +2 energy");
+	          System.out.println("speckick - average, -5 energy ");
+	          System.out.println("fatality - powerful, -10 energy");
+	          System.out.println("heal - +10 health");
+	          System.out.println("wait - +4 energy");
+	          
+	          System.out.println("");
+	          System.out.println("CHOOSE YOUR FIGHTER!");   
+	       Scanner ffsc = new Scanner(System.in);
+	       String ffch = ffsc.nextLine();
+	       Creature fcch = new Creature(ffch);
+	            if(fcch.name.equals("fartator")){
+	                fcch.dam=5;
+	                fcch.hlth=75;
+	                fcch.enrgy=10;
+	      }else if(fcch.name.equals("eructer")){
+	                fcch.dam=4;
+	                fcch.hlth=90;
+	                fcch.enrgy=10;
+	   }else if(fcch.name.equals("pinkmonster")){
+	                fcch.dam=6;
+	                fcch.hlth=60;
+	                fcch.enrgy=10;
+	     }else if(fcch.name.equals("theanimal")){
+	                fcch.dam=3;
+	                fcch.hlth=120;
+	                fcch.enrgy=10;
+	       }else{System.out.println("Choose another fighter!");
+	       oneplayerfight();}
+	       
+	       
+	          System.out.println("");
+	          System.out.println("CHOOSE YOUR OPPONENT!");   
+	       Scanner sfsc = new Scanner(System.in);
+	       String sfch = sfsc.nextLine();
+	       Creature scch= new Creature(sfch);
+	       if(scch.name.equals(fcch.name)){
+	                System.out.println("Choose another fighter!");
+	       oneplayerfight();}
+	       
+	       
+	        if(scch.name.equals("fartator")){
+	                scch.dam=5;
+	                scch.hlth=75;
+	                scch.enrgy=10;
+	       }else if(scch.name.equals("eructer")){
+	                scch.dam=4;
+	                scch.hlth=90;
+	                scch.enrgy=10;
+	   }else if(scch.name.equals("pinkmonster")){
+	                scch.dam=6;
+	                scch.hlth=60;
+	                scch.enrgy=10;
+	     }else if(scch.name.equals("theanimal")){
+	                scch.dam=3;
+	                scch.hlth=120;
+	                scch.enrgy=10;
+	       }else{System.out.println("Choose another fighter!");
+	       oneplayerfight();}
+	    
+	          System.out.println("LET THE BATTLE BEGIN");
+	          
+	          
+	          
+	          
+	          
+	           
+	          while (fcch.hlth>0 && scch.hlth>0){
+	          System.out.println("");
+	          System.out.println(ffch+"'s attack!");                    
+	          fcch.hit(scch);
+	        
+	         if (scch.hlth==0){
+	          System.out.println("");
+	          System.out.println("YOU WIN!!!");
+	          continue;
+	                      }
+	          
+	          System.out.println("");
+	          System.out.println(sfch+"'s attack");                               
+	          scch.kick(fcch);
+	         
+	          if (fcch.hlth==0){
+	            System.out.println("");
+	           System.out.println("YOU LOST!!!");
+	            continue;
+	                       }
+	   }
+	            
+	        
+	          System.out.println("");
+	          System.out.println("");
+	          System.out.println(">>>Play again");
+	          System.out.println(">>>Menu"); 
+	          Scanner agmsc = new Scanner(System.in);
+	          String agmsch = agmsc.nextLine();
+	          switch(agmsch){
+	          case "playagain":
+	              oneplayerfight();
+	          break;
+	          default:
+	               menu();
+	             }
+	       }
+
+
+
+
+	}
