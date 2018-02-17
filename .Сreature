@@ -1,0 +1,227 @@
+package Somebody;
+
+import java.util.Scanner;
+
+public class Creature {
+	   public String name;
+	   public int dam;
+	   public int hlth;
+	   public int enrgy;
+	   public int def;
+	   public int mon;
+	   public int dopdam;
+	   public int dopdef;
+	   public boolean attarm;
+	   public boolean defarm;
+	   String attarmname;
+	   String defarmname;
+	   
+	   public Creature(String c){
+	       name=c;
+	   }
+	   
+	   
+	   public void sethlth(int xyz){
+	       this.hlth = xyz;
+	   }
+	   public void setenrgy(int xyz2){
+	       this.enrgy = xyz2;
+	   }
+	   public void setdam(int xyz3){
+	       this.dam = xyz3;
+	   }
+	   public void setdef(int xyz4){
+	       this.def = xyz4;
+	   }
+	   public void setmon(int xyz5){
+	       this.mon = xyz5;
+	   }
+	   public void setattarm(boolean xyz6){
+	       this.attarm = xyz6;
+	   }
+	   public void setdefarm(boolean xyz7){
+	       this.defarm = xyz7;
+	   }
+	   public void setdopdam(int xyz8){
+	       this.dopdam=xyz8;
+	   }
+	   public void setdopdef(int xyz9){
+	       this.dopdef=xyz9;
+	   }
+	   public void equipatt(Equipment e){
+	    if(attarm==false){
+	       this.attarm =true;
+	       this.attarmname = e.eqname;
+	       this.dam+=e.dameq;  
+	       this.dopdam=e.dameq;
+	    }else{
+	        rematt();
+	       this.attarm =true;
+	       this.attarmname = e.eqname;
+	       this.dam+=e.dameq;  
+	       this.dopdam=e.dameq;
+	    }
+	   }
+	   public void equipdef(Equipment e){
+	    if(defarm==false){
+	       this.defarm=true;
+	       this.defarmname = e.eqname;
+	       this.def+=e.defeq;
+	       this.dopdef=e.defeq;
+	    }else{
+	        remdef();
+	       this.defarm=true;
+	       this.defarmname = e.eqname;
+	       this.def+=e.defeq;
+	       this.dopdef=e.defeq;
+	    }
+	   }   
+	   public void rematt(){
+	       this.attarm=false;
+	       this.dam-=this.dopdam;
+	       this.dopdam=0;
+	   }
+	   public void remdef(){
+	       this.defarm=false;
+	       this.def-=this.dopdef;
+	       this.dopdef=0;
+	   }
+	   
+	   public void kick(Creature n){
+	       int hltho=n.hlth;
+	       int a = hltho-(dam-(n.def));
+	       sethlth(++hlth);
+	       n.sethlth(a);  
+	       System.out.println("Your Health now: "+a);
+	   }
+	   
+	   
+	   public void punch(Creature n){
+	    int hltho = n.hlth;
+	    int a = hltho-(dam-(n.def)-1);
+	    if (a<=0){
+	        System.out.println("Enemy is Killed");
+	        n.sethlth(0);
+	        if (enrgy <9){
+	            setenrgy(enrgy+=2);
+	        }else if (enrgy == 9){
+	            setenrgy(++enrgy);
+	        }
+	            }else{
+	    System.out.println("Enemy's health now: " + a);
+	    n.sethlth(a);
+	    if (enrgy < 9){
+	        setenrgy(enrgy+=2);
+	        }else if (enrgy == 9){
+	        setenrgy(++enrgy);
+	      } 
+	    System.out.println( "Your Energy now: " + enrgy);
+	    }
+	  }
+	   
+	   public void speckick(Creature n){
+	       int hltho = n.hlth;
+	       int a =hltho - (dam-(n.def)+2);
+	      if (enrgy<5){
+	          System.out.println("You are too tired to special kick!");
+	             punch(n);
+	      }else{
+	        if (a<=0){
+	            System.out.println("Enemy is Killed");
+	            n.sethlth(0);
+	            setenrgy(enrgy-=5);
+	       }else{
+	           System.out.println("Enemy's health now: " + a);
+	           n.sethlth(a);
+	           setenrgy(enrgy-=5);
+	       }
+	       System.out.println("Your energy now: "+ enrgy);
+	   }
+	  }
+	   
+	   
+	   public void fatality(Creature n){
+	       int hltho = n.hlth;
+	       int a =hltho - (dam-(n.def)+8);
+	      if (enrgy<10){
+	          System.out.println("You are too tired to fatality!");
+	             speckick(n);
+	      }else{
+	        if (a<=0){
+	            System.out.println("Enemy is Killed");
+	            n.sethlth(0);
+	            setenrgy(enrgy-=10);
+	       }else{
+	           System.out.println("Enemy's health now: " + a);
+	           n.sethlth(a);
+	           setenrgy(enrgy-=10);
+	       }
+	       System.out.println("Your energy now: "+ enrgy);
+	   }
+	  }
+	  
+	  public void heal(Creature n){
+	      if(enrgy<5){
+	          System.out.println("You are too tired to heal!");
+	          punch(n);
+	      }else{
+	          sethlth(hlth+=10);
+	          setenrgy(enrgy-=5);
+	          System.out.println("Your Health now: "+hlth);
+	          System.out.println("Your Energy now: "+enrgy);
+	      }
+	  }
+	  
+	  public void wait(Creature n){
+	      setenrgy(enrgy+=4);
+	      System.out.println("Your energy now: "+enrgy);
+	  }
+	   
+	   
+	   public void showstats(){
+	      System.out.println("");
+	      System.out.println("Now you have:");
+	      System.out.println(dam+" Damage");
+	      System.out.println(hlth+" Health");
+	      System.out.println(enrgy+"/10 Energy");
+	      System.out.println(def+" Defense");
+	      System.out.println(mon+" Money");
+	        if(attarm == true){
+	            System.out.println(attarmname+" is equiped on You ");
+	        }
+	        if(defarm == true){
+	            System.out.println(defarmname+" is equiped on You");
+	        }
+	   }
+	   
+	   public void hit(Creature n){
+	           Scanner figsc = new Scanner(System.in);
+	           String figch = figsc.nextLine();
+
+	           switch (figch){
+
+	             case "punch":
+	                 punch(n);
+	             break;
+
+	             case "speckick":
+	                 speckick(n);
+	             break;
+
+	             case "fatality":
+	                 fatality(n);
+	             break;
+	             
+	             case "heal":
+	                  heal(n);
+	             break;
+	             
+	             case "wait":
+	                  wait(n);
+	             break;
+	                  default:
+	                  hit(n);
+
+	       }
+	   } 
+	 }
