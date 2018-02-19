@@ -581,138 +581,62 @@ public class event{
 	         System.out.println("What do you want?");
 	          Scanner sc=new Scanner(System.in);
 	          String scc=sc.nextLine();
+	          Equipment e = new Equipment(scc);
 	          
-	          switch(scc){
-	              case"blade":
-	                 if(adam.mon<1500){
-	                     System.out.println("You don't have enough money!");
-	                   System.out.println("Wanna buy other thing?");
-	                   Scanner scf= new Scanner(System.in);
-	                 String scff=scf.nextLine();
-	                      switch(scff){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                      }
-	                 }else{
-	                	 System.out.println("");
-	                    System.out.println("You bought blade!");
-	                adam.setmon(adam.mon-=1500);
-	                adam.equipatt(blade);
-	                System.out.println("");
-	                System.out.println("Wanna buy other thing?");
-	                   Scanner scfff= new Scanner(System.in);
-	             String scffff=scfff.nextLine();
-	                      switch(scffff){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                 }
-	                }
-	              break;
-	              case"katana":
-	              if(adam.mon<3000){
-	                     System.out.println("You don't have enough money!");
-	                   System.out.println("Wanna buy other thing?");
-	                   Scanner scs= new Scanner(System.in);
-	                 String scss=scs.nextLine();
-	                      switch(scss){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                      }
-	                 }else{
-	                	 System.out.println("");
-	                    System.out.println("You bought katana!");
-	                adam.setmon(adam.mon-=3000);
-	                adam.equipatt(katana);
-	                System.out.println("");
-	                System.out.println("Wanna buy other thing?");
-	                   Scanner scsss= new Scanner(System.in);
-	             String scssss=scsss.nextLine();
-	                      switch(scssss){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                 }
-	                }
-	              break;
-	              case"armor":
-	              if(adam.mon<1500){
-	                     System.out.println("You don't have enough money!");
-	                   System.out.println("Wanna buy other thing?");
-	                   Scanner sct= new Scanner(System.in);
-	                 String sctt=sct.nextLine();
-	                      switch(sctt){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                      }
-	                 }else{
-	                	 System.out.println("");
-	                    System.out.println("You bought armor!");
-	                adam.setmon(adam.mon-=1500);
-	                adam.equipdef(armor);
-	                System.out.println("");
-	                System.out.println("Wanna buy other thing?");
-	                   Scanner scttt= new Scanner(System.in);
-	             String sctttt=scttt.nextLine();
-	                      switch(sctttt){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                 }
-	                }
-	              break;
-	              case"herocape":
-	              if(adam.mon<3000){
-	                     System.out.println("You don't have enough money!");
-	                   System.out.println("Wanna buy other thing?");
-	                   Scanner scz= new Scanner(System.in);
-	                 String sczz=scz.nextLine();
-	                      switch(sczz){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                      }
-	                 }else{
-	                	 System.out.println("");
-	                    System.out.println("You bought herocape!");
-	                adam.setmon(adam.mon-=3000);
-	                adam.equipdef(herocape);
-	                System.out.println("");
-	                System.out.println("Wanna buy other thing?");
-	                   Scanner sczzz= new Scanner(System.in);
-	             String sczzzz=sczzz.nextLine();
-	                      switch(sczzzz){
-	                          case"yes":
-	                          buying();
-	                          break;
-	                          default:
-	                          choose();
-	                 }
-	                }
-	              break;
-	              default: buying();
-	        }
-	         
+	          if(e.eqname.equals("blade")){
+	                e.cost=1500;
+	                e.dameq=2;
+	         }else if(e.eqname.equals("katana")){
+	                e.cost=3000;
+	                e.dameq=5;
+	         }else if(e.eqname.equals("armor")){
+	                e.cost=1500;
+	                e.defeq=1;
+	          }else if(e.eqname.equals("herocape")){
+	                e.cost=3000;
+	                e.defeq=3;
+	       }else{System.out.println("I don't have this item.");
+	       buying();}
+	          
+	          
+	          if(adam.mon<e.cost){
+                  System.out.println("You don't have enough money!");
+                  System.out.println("Wanna buy other thing?");
+                  Scanner scf= new Scanner(System.in);
+                  String scff=scf.nextLine();
+                      switch(scff){
+                         case"yes":
+                         buying();
+                         break;
+                         default:
+                         choose();
+                   }
+              }else{
+             	 System.out.println("");
+                 System.out.println("You've bought "+ e.eqname);
+             adam.setmon(adam.mon-=e.cost);
+               
+                 if(e.dameq>0){
+             adam.equipatt(e);
+                 }else{
+             adam.equipdef(e);   	 
+                 }
+                 
+             System.out.println("");
+             System.out.println("Wanna buy other thing?");
+                Scanner scfff= new Scanner(System.in);
+          String scffff=scfff.nextLine();
+                   switch(scffff){
+                       case"yes":
+                       buying();
+                       break;
+                       default:
+                       choose();
+              }
+             }   
 	     }
-	     
-	     
+	          
+	          
 	       
 	     public void wizardmeet(){
 	         System.out.println("");
@@ -1347,3 +1271,4 @@ public class event{
 
 
 	}
+
